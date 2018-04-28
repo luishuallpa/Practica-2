@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Proyeccion de Impuesto</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<style>
+input {
+	max-width: 300px !important;
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<br> <br>
+		<label class="control-label col-md-2" for="txtNombre">Calcular</label>
+		<br> <br>
+
+		<form class="form-horizontal" action="#"
+			th:action="@{/trabajador/Impuesto}" th:object="${trabajador}"
+			method="post">
+			<div class="form-group">
+				<label class="control-label col-md-2" for="txtNombre">Nombre</label>
+
+				<div class="col-md-10">
+					<input type="text" th:field="*{name}" class="form-control"
+						id="txtNombre"> <span class="bg-danger text-danger"
+						th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-2" for="txtDni">DNI</label>
+
+				<div class="col-md-10">
+					<input type="text" th:field="*{dni}" class="form-control"
+						id="txtDni"> <span class="bg-danger text-danger"
+						th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}">Error</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-2" for="txtSalario">Ingresos</label>
+
+				<div class="col-md-10">
+					<input type="text" th:field="*{salario}" class="form-control"
+						id="txtSalario"> <span class="bg-danger text-danger"
+						th:if="${#fields.hasErrors('salario')}" th:errors="*{salario}">Error</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-2" for="txtUIT">UIT</label>
+
+				<div class="col-md-10">
+					<input type="text" class="form-control" th:field="*{uit}"
+						id="txtUIT"> <span class="bg-danger text-danger"
+						th:if="${#fields.hasErrors('uit')}" th:errors="*{uit}">Error</span>
+				</div>
+			</div>
+
+
+
+			<div class="form-group">
+				<label class="control-label col-md-2">Tipo</label>
+
+				<div class="col-md-10">
+					<label class="radio-inline">
+					<input type="radio"	th:field="*{tipoTrabajador}" th:value="Dependiente"	name="optradio">dependiente</label> 
+					<label class="radio-inline">
+					<input type="radio" th:field="*{tipoTrabajador}" th:value="Independiente" name="optradio">independiente</label>
+				</div>
+				<span class="bg-danger text-danger"
+					th:if="${#fields.hasErrors('tipoTrabajador')}"
+					th:errors="*{tipoTrabajador}">Error</span>
+			</div>
+			<div class="form-group text-center">
+				<div class="col-md-6">
+					<input type="submit" value="calculo" class="btn btn-warning">
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
